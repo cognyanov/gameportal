@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getCurrentMoney } from '../app.module';
 import { setMoney } from '../app.module';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-guess-the-card',
@@ -40,6 +41,7 @@ export class GuessTheCardComponent implements OnInit {
       localStorage.setItem('money', '' + newMoney);
       setMoney(newMoney);
       this.money = getCurrentMoney();
+      
     } else {
       alert('You lost! Try again.');
     }
