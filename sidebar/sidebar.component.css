@@ -1,0 +1,20 @@
+aside {
+    position: fixed;
+    margin-left: -20px;
+    margin-top: 300px;
+    background-color: rebeccapurple;
+    padding: 60px 60px 60px 20px;
+    border-radius: 0 40px 40px 0;
+    color: white;
+    font-size: 25px;
+}
+
+.arrow-left {
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent; 
+    border-right: 30px solid rgb(0, 219, 11);
+    margin-right: -60px;
+    float: right;
+}
