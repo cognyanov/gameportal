@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { isLogged } from '../app.module';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,4 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isLoggedIn(): boolean {
+    return isLogged();
+  }
 }

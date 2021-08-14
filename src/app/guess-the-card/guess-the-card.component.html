@@ -1,0 +1,41 @@
+<div class="top-div">
+        <h1>Guess the card</h1>
+    <article class="img-wrapper">
+        <img id="theCard" src="https://www.researchgate.net/profile/Francisco-Perales-3/publication/334204491/figure/fig1/AS:776599045697537@1562167049292/Question-card-Symbol-question-mark-example-card.jpg" alt="">
+    </article>
+    <div class="picks-wrapper">
+        <article class="colors-wrapper">
+            <span class="title-guess">Guess to win your bet x2.</span>
+            <div id="red" (click)="addBlueBorder($event)" class="color-pick red">RED</div>
+            <div id="black" (click)="addBlueBorder($event)" class="color-pick black">BLACK</div>
+        </article>
+
+        <article class="kinds">
+            <span class="title-guess">Guess to win your bet x4.</span>
+            <div class="kinds-inside">
+                <div (click)="addBlueBorder($event)" class="kind-wrapper">
+                    <img id="diamond" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Playing_card_diamond_A.svg/125px-Playing_card_diamond_A.svg.png" alt="">
+                </div>
+                <div (click)="addBlueBorder($event)" class="kind-wrapper">
+                    <img id="heart" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Playing_card_heart_A.svg/125px-Playing_card_heart_A.svg.png" alt="">
+                </div>
+                <div (click)="addBlueBorder($event)" class="kind-wrapper">
+                    <img id="club" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Playing_card_club_A.svg/125px-Playing_card_club_A.svg.png" alt="">
+                </div>
+                <div (click)="addBlueBorder($event)" class="kind-wrapper">
+                    <img  id="spade" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Playing_card_spade_A.svg/125px-Playing_card_spade_A.svg.png" alt="">
+                </div>
+            </div>
+        </article>
+       
+    </div>
+    <article class="bet-wrapper">
+        <input id="betAmount" class="bet" type="text" placeholder="Choose your bet">
+        <button (click)="bet()" class="bet-btn">BET</button>
+    </article>
+    <article class="balance-wrapper">
+        <span>Balance: </span>
+        <span>{{money}}</span>
+    </article>
+   
+</div>
