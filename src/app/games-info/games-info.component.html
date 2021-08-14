@@ -8,8 +8,8 @@
             <p>Minimum bet: 10 coins</p>
             <p>Maximum bet: 100 coins</p>
             <p>Possible winnings: x2 / x4</p>
-            <button>START THE GAME</button>
-            <p class="need-login-alert">You need to login first to start the game.</p>
+            <button routerLink="/guess-the-card">>START THE GAME</button>
+            <p *ngIf="!isLogged()" class="need-login-alert">You need to login first to start the game.</p>
         </article>
     </article>
 </main>
