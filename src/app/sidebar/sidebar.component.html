@@ -1,5 +1,6 @@
-<aside id="aside" onclick="hideSidebar()">
-    <div class="arrow-left"></div>
+<div  *ngIf="isLogged()" >
+<aside id="aside" (click)="handleClick()">
+    <div  class="arrow-left"></div>
     <article>
         <span>Username: </span>
         <span>Gosho</span>
@@ -7,7 +8,8 @@
 
     <article>
         <span>Money: </span>
-        <span>100</span>
+        <span>{{myMoney}}</span>
     </article>
   
 </aside>
+</div>
