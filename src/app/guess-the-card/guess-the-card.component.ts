@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getCurrentMoney } from '../app.module';
 import { setMoney } from '../app.module';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-
+import { isLogged } from '../app.module';
 @Component({
   selector: 'app-guess-the-card',
   templateUrl: './guess-the-card.component.html',
@@ -14,6 +13,9 @@ export class GuessTheCardComponent implements OnInit {
 
   pick = '';
   money = getCurrentMoney();
+  wonAmount = 0;
+  hasWon = false;
+  hasLost = false;
 
   ngOnInit(): void {
   }
@@ -25,27 +27,46 @@ export class GuessTheCardComponent implements OnInit {
   }
 
   bet() {
+  
     const betAmount = +(<HTMLInputElement>document.getElementById('betAmount')).value;
-    if (!betAmount) {
-      alert('Please choose your bet.');
+    if (isNaN(betAmount)) {
+      alert('Invalid bet amount.');
+      return;
+    }
+    if (betAmount < 10 || betAmount > 100) {
+      alert('Please choose bet between 10 and 100.');
       return;
     }
     if (this.money != null)
     if (betAmount > +this.money) {
-      alert('You don\'t have enough money!')
+      alert('You don\'t have enough money!');
+      return;
     }
+    if (this.pick == '') {
+      alert('Please pick a color or a card.')
+      return;
+    }
+
     const result = this.getRandomCard();
-    if (result.includes(this.pick)) {
-      alert('Congratulations! You won!');
+
+    if (result[0] == this.pick) {
       const newMoney = betAmount + (Number)(this.money);
-      localStorage.setItem('money', '' + newMoney);
-      setMoney(newMoney);
-      this.money = getCurrentMoney();
-      
+      this.updateMoney(newMoney);
+      this.wonAmount = betAmount * 2;
+      this.hasWon = true;
+      this.hasLost = false;
+    } else if (result[1] == this.pick) {
+      const newMoney = 3 * betAmount + (Number)(this.money);
+      this.updateMoney(newMoney);
+      this.wonAmount = betAmount * 4;
+      this.hasWon = true;
+      this.hasLost = false;
     } else {
-      alert('You lost! Try again.');
+      const newMoney = (Number)(this.money) - betAmount;
+      this.updateMoney(newMoney);
+      this.hasWon = false;
+      this.hasLost = true;
     }
-    console.log(result);
   }
 
   removeAllBorders() {
@@ -71,7 +92,6 @@ export class GuessTheCardComponent implements OnInit {
     if (number == 1) {
       result.push('red', 'diamond');
       theCard?.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Playing_card_diamond_A.svg/125px-Playing_card_diamond_A.svg.png');
-      console.log(theCard);
     } else if (number == 2) {
       result.push('red', 'heart');
       theCard?.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Playing_card_heart_A.svg/125px-Playing_card_heart_A.svg.png');
@@ -85,4 +105,14 @@ export class GuessTheCardComponent implements OnInit {
     return result;
   }
   
+  updateMoney(newMoney: number) {
+    localStorage.setItem('money', '' + newMoney);
+    setMoney(newMoney);
+    this.money = getCurrentMoney();
+    document.getElementById('aside')?.click();
+  }
+
+  isLogged() {
+    return isLogged();
+  }
 }

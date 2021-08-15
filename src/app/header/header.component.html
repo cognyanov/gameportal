@@ -1,10 +1,10 @@
 <header>
 <nav>
-    <a routerLink="/home">LOGO</a>
+    <a routerLink="/home">Home</a>
     <a routerLink="/games">Games</a>
     <a *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
     <a *ngIf="!isLoggedIn()" routerLink="/register">Register</a>
-    <a *ngIf="isLoggedIn()" routerLink="/login">Something</a>
-    <a *ngIf="isLoggedIn()" routerLink="/login">Logout</a>
+    <a *ngIf="isLoggedIn()" routerLink="">Something</a>
+    <a *ngIf="isLoggedIn()" routerLink="/logout" (click)="logout()">Logout</a>
 </nav>
 </header>

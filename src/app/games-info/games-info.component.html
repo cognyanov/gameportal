@@ -5,10 +5,10 @@
             <article class="img-wrapper">
                 <img src="https://www.researchgate.net/profile/Francisco-Perales-3/publication/334204491/figure/fig1/AS:776599045697537@1562167049292/Question-card-Symbol-question-mark-example-card.jpg" alt="">
             </article>
-            <p>Minimum bet: 10 coins</p>
-            <p>Maximum bet: 100 coins</p>
+            <p>Minimum bet: 10 money</p>
+            <p>Maximum bet: 100 money</p>
             <p>Possible winnings: x2 / x4</p>
-            <button routerLink="/guess-the-card">>START THE GAME</button>
+            <button *ngIf="isLogged()" routerLink="/guess-the-card">START THE GAME</button>
             <p *ngIf="!isLogged()" class="need-login-alert">You need to login first to start the game.</p>
         </article>
     </article>

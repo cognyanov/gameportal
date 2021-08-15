@@ -1,4 +1,4 @@
-<div class="top-div">
+<div class="top-div" *ngIf="isLogged()">
         <h1>Guess the card</h1>
     <article class="img-wrapper">
         <img id="theCard" src="https://www.researchgate.net/profile/Francisco-Perales-3/publication/334204491/figure/fig1/AS:776599045697537@1562167049292/Question-card-Symbol-question-mark-example-card.jpg" alt="">
@@ -37,5 +37,8 @@
         <span>Balance: </span>
         <span>{{money}}</span>
     </article>
-   
+    <article class="betMsg-wrapper">
+            <span class="wonMsg" *ngIf="hasWon">Congratulations! You won {{wonAmount}} money!</span>
+            <span class="lostMsg" *ngIf="hasLost">You lost. But don't give up! Try again!</span>
+    </article>
 </div>

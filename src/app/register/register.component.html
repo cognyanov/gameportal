@@ -3,7 +3,11 @@
         <h1>JOIN US</h1>
         <input id="username" name="username" type="text" placeholder="Username">
         <input id="password" name="password" type="password" placeholder="Password">
-        <input type="password" placeholder="Confirm password">
+        <input id="confirmPassword" type="password" placeholder="Confirm password">
         <button (click)="register()">Sign up</button>
+        <span class="errorReg" *ngIf="invalidUsername">Username must be between 3 and 20 symbols.</span>
+        <span class="errorReg" *ngIf="invalidPassword">Password must be between 6 and 24 symbols.</span>
+        <span class="errorReg" *ngIf="notMatch">Passwords don't match.</span>
+        <span class="errorReg" *ngIf="existsUsername">Username already exists.</span>
     </article>
 </main>

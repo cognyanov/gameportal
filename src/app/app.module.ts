@@ -56,6 +56,7 @@ export var userData = {
 export function getOwnerId() {
   return localStorage.getItem('ownerId');
 }
+
  export async function getMoney() {
    const token = getToken();
    if (token != undefined && token != null) {
@@ -79,4 +80,8 @@ export function getOwnerId() {
       money
     }),
     headers: {'Content-Type': 'application/json; charset=UTF-8'} });
+ }
+
+ export function getUsername() {
+   return localStorage.getItem('username');
  }

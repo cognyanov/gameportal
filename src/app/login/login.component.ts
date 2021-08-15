@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   constructor(private router: Router) { }
   loginURL = 'https://api.backendless.com/895B12E6-5352-00DE-FF30-4C902976EF00/692D3EDD-F2B8-4007-92A0-ABA28A5A52A2/users/login';
+  failedLogin = false;
 
   ngOnInit(): void {
     const APP_ID = '895B12E6-5352-00DE-FF30-4C902976EF00';
@@ -30,14 +31,15 @@ export class LoginComponent implements OnInit {
       result.json().then((result) => {
         localStorage.setItem('user-token', result['user-token']);
         localStorage.setItem('ownerId', result['ownerId']);
+        localStorage.setItem('username', result['username']);
+        localStorage.setItem('money', result['money']);
+        document.getElementById('aside')?.click();
       });
       this.router.navigateByUrl('/home');
 
     } else {
-      console.log('invalid username or password.');
+      this.failedLogin = true;
     }
-
-    console.log(isLogged());
   }
 
   async loginUser(username: string, password: string): Promise<Response> {
